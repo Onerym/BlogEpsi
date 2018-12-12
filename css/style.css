@@ -1,0 +1,22 @@
+
+footer{
+	margin: 0;
+	background-color: #EB0E6A;
+	font-family:'Exo', sans-serif;
+	color: white;
+	text-align:center;
+    position: fixed;
+    bottom:0;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+    font-size:13px;
+}
+
+#facebook{
+	
+}
+
+#contact{
+	text-decoration: none; 
+}
