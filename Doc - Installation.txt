@@ -1,0 +1,23 @@
+1- Deplacer les fichiers dans var/www/html,
+2- Créer une base nommer "Blog",
+3- Puis éxecuter ces commandes SQL:
+
+CREATE TABLE users (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE configblog(
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    titre VARCHAR(50) NOT NULL UNIQUE,
+);
+
+CREATE TABLE article (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    article VARCHAR(12500) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+4- Puis rendez vous sur http://votresiteweb/Installation.php

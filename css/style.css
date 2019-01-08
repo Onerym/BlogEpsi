@@ -1,10 +1,10 @@
 footer{
 	margin: 0;
-	background-color: #EB0E6A;
+	background-color: grey;
 	font-family:'Exo', sans-serif;
 	color: white;
 	text-align:center;
-    position: fixed;
+    position: relative;
     bottom:0;
     width:100%;
     display:inline-block;
@@ -23,4 +23,121 @@ footer{
 #socialbar {
 	padding: 0 15em; 
 	text-align: center;
+}
+
+header{
+margin-left: auto;
+margin-right: auto;
+
+margin-top: 0px;
+padding:0;
+background-color: grey;
+display:inline-block;
+position:relative;
+height:300px;
+   
+}
+#titre{
+    font-size: 35px;
+    color: white;
+    font-family: Impact;
+    font-weight: bold;
+    position:absolute;
+    top:100px;
+    left:450px;
+    bottom: 25px;
+}
+#logo{
+    width: 200px;
+    height: 200px;
+    margin:auto;
+    padding-top: 35px;
+margin-left:100px;
+
+}
+#connexion{
+    position:absolute;
+top:0px;
+right:40px;
+}
+
+#info{
+    position:absolute;
+top:75px;
+right:40px;
+}
+
+body {
+margin: auto;
+padding:auto;
+margin-top:0px;
+}
+
+
+
+#slideshow {
+  overflow: hidden;
+  height: 522px;
+  width: 928px;
+  margin: 0 auto;
+}
+
+.slide-wrapper {
+  width: 2912px;
+  -webkit-animation: slide 18s ease infinite;
+}
+
+.slide {
+  float: left;
+  height: 522px;
+  width: 928px;
+}
+
+.slide-number {
+  color: #000;
+  text-align: center;
+  font-size: 10em;
+}
+
+@-webkit-keyframes slide {
+  20% {margin-left: 0px;}
+  30% {margin-left: -928px;}
+  50% {margin-left: -928px;}
+  60% {margin-left: -1856px;}
+  80% {margin-left: -1856px;}
+
+}
+
+.slider{
+	height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.formchange{
+    text-align: center;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+}
+
+.article{
+-moz-box-shadow: 0px 0px 20px 0px #656565;
+-webkit-box-shadow: 0px 0px 20px 0px #656565;
+-o-box-shadow: 0px 0px 20px 0px #656565;
+box-shadow: 0px 0px 20px 0px #656565;
+filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=NaN, Strength=20);
+-moz-border-radius: 20px;
+-webkit-border-radius: 20px;
+border-radius: 20px;
+    position: relative;
+    margin-left: auto;
+    margin-right:auto;
+    width: 30%;
+    height: 20%;
+    padding: 20px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    
 }

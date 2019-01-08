@@ -1,6 +1,9 @@
+
+
+
 <?php
 // Initialize the session
-session_start();
+
  
 
  
@@ -16,14 +19,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
  
     // Check if username is empty
     if(empty(trim($_POST["username"]))){
-        $username_err = "Please enter username.";
+        $username_err = "Nom de compte non valide.";
     } else{
         $username = trim($_POST["username"]);
     }
     
     // Check if password is empty
     if(empty(trim($_POST["password"]))){
-        $password_err = "Please enter your password.";
+        $password_err = "Mot de passe non valide.";
     } else{
         $password = trim($_POST["password"]);
     }
@@ -62,15 +65,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                         } else{
                             // Display an error message if password is not valid
-                            $password_err = "The password you entered was not valid.";
+                            $password_err = "Mot de passe non valide.";
                         }
                     }
                 } else{
                     // Display an error message if username doesn't exist
-                    $username_err = "No account found with that username.";
+                    $username_err = "Aucun compte n'a été trouvé avec ce nom.";
                 }
             } else{
-                echo "Oops! Something went wrong. Please try again later.";
+                echo "Une erreur est survenue, réessayez plus tard.";
             }
         }
         
@@ -78,52 +81,80 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         mysqli_stmt_close($stmt);
     }
     
-    // Close connection
-    mysqli_close($link);
+
 }
 ?>
+
+<?php       
+    if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) { 
+        echo '<style type="text/css">
+        #info {
+            display: none;
+        }
+        #connexion {
+            display: block;
+        }
+        </style>';
+    }            
+    else
+    {
+        echo '<style type="text/css">
+        #info {
+            display: block;
+        }
+        #connexion {
+            display: none;
+        }
+        </style>';
+    }
+?>
+
+<?php
+session_start();
+$info = mysqli_query($link, 'SELECT * FROM configblog WHERE id = 1');
+
+$titreaffichage = mysqli_fetch_assoc($info);
+
+?>
+
+
 
 
 
 	<body>
             <header>
             <div id='logo'>
-                <a href="index.php"><img id="logo" src="images/chien.jpg" alt="Logo"></a>
+                <a href="index.php"><img id="logo" src="images/Logo" alt="Logo"></a>
             </div>
-
-                <h1>LA VIE EST NUL</h1>
-                <nav>
-                    <ul>
-                        <li><a href="index.php">Accueil</a></li>
-                        <li><a href="contact.php">Contact</a></li>
-                    </ul>
-    <div class="wrapper">
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-            <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
-                <label>Username</label>
-                <input type="text" name="username" class="form-control" value="<?php echo $username; ?>">
-                <span class="help-block"><?php echo $username_err; ?></span>
-            </div>    
-            <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                <label>Password</label>
-                <input type="password" name="password" class="form-control">
-                <span class="help-block"><?php echo $password_err; ?></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-primary" value="Login">
-            </div>
-            <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
-        </form>
-    </div>
-                    <a href="welcome.php"><input type="submit" class="btn btn-primary" value="Espace membre"/></a>
-                    
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to our site.</h1>
-    <p>
-        <a href="reset-password.php" class="btn btn-warning">Reset Your Password</a>
-        <a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a>
-    </p>
+                <div id='titre'>
+                <h1><?php echo $titreaffichage['titre']; ?></h1>
+                </div>
+        <div id='connexion'>
+            <h2>Connexion</h2>
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
+                    <input type="text" name="username" class="form-control" value="<?php echo $username; ?>" placeholder="Nom de compte">
+                    <span class="help-block"><?php echo $username_err; ?></span>
+                </div>    
+                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
+                    <input type="password" name="password" class="form-control" placeholder="Mot de passe">
+                    <span class="help-block"><?php echo $password_err; ?></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary" value="Connexion">
+                </div>
+                <p>Aucun compte? <a href="register.php">Créez en un!</a>.</p>
+            </form>
+        </div>
+        <div id='info'>                    
+            <h1>Bonjour, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b></h1>
+        <p>
+            <a href="welcome.php" class="btn btn-primary">Espace membre</a>
+            <a href="logout.php" class="btn btn-danger">Déconnexion</a>
+        </p>
+    </div>          
+               
             </header>	
         </body>
 </html>
+
