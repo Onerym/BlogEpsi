@@ -1,0 +1,5 @@
+﻿1- Deplacer les fichiers dans var/www/html,
+
+2- Puis rendez vous sur http://votresiteweb/Installation.php
+
+3- Enfun créer vous un compte.
